@@ -1,0 +1,50 @@
+<div class="card card-body mx-auto" style="width: 400px;">
+  <h2>Login Page</h2>
+  <div class="card-header">
+      Enter a valid login information 
+    </div>
+  <div class="card-body">
+          <!-- Login Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Email Field -->
+             <div class="mb-3">
+              <label for="username" class="form-label">Username (Email)</label>
+              <input
+                type="email"
+                class="form-control"
+                id="userEmail"
+                formControlName="userEmail"
+              />
+              <!-- Display validation error if email is not valid -->
+              <div
+                *ngIf="loginClicked && loginForm.get('userEmail')?.hasError('email')"
+                class="text-danger mt-2"
+              >
+                Invalid email address
+              </div>
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+              <label for="userPass" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="userPass"
+                formControlName="userPass"
+              />
+              <!-- Display validation error if password is not entered -->
+              <div
+                *ngIf="loginClicked && loginForm.get('userPass')?.hasError('required')"
+                class="text-danger mt-2"
+              >
+                Password is required
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+      </div>
+

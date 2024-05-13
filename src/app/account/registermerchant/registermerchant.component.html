@@ -1,0 +1,77 @@
+<!-- registermerchant.component.html -->
+<div class="card card-body mx-auto">
+  <div *ngIf="personalDatas">
+    <!-- Personal Data Form -->
+    <form [formGroup]="userDataForm" class="container mt-4">
+      <div class="mb-3">
+        <label for="userEmail" class="form-label">Email:</label>
+        <input type="email" id="userEmail" formControlName="userEmail" class="form-control" />
+        <div *ngIf="userDataForm.get('userEmail')?.hasError('emailTaken')" class="text-danger">
+          This email is already taken.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="userPhone" class="form-label">Phone:</label>
+        <input type="text" id="userPhone" formControlName="userPhone" class="form-control" />
+      </div>
+
+      <div class="mb-3">
+        <label for="userName" class="form-label">Name:</label>
+        <input type="text" id="userName" formControlName="userName" class="form-control" />
+      </div>
+
+      <div class="mb-3">
+        <label for="userDescription" class="form-label">Description:</label>
+        <textarea id="userDescription" formControlName="userDescription" class="form-control"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="roles" class="form-label">Roles:</label>
+        <input type="text" id="roles" formControlName="roles" readonly class="form-control" />
+      </div>
+
+      <div class="mb-3">
+        <label for="licenseDescription" class="form-label">License Description:</label>
+        <textarea id="licenseDescription" formControlName="licenseDescription" class="form-control"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="reviewsDescription" class="form-label">Reviews Description:</label>
+        <textarea id="reviewsDescription" formControlName="reviewsDescription" class="form-control"></textarea>
+      </div>
+
+      <div>
+        <button type="button" (click)="personalDataBtnClick()" class="btn btn-primary">
+          Next
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="attachment">
+    <!-- Attachment Form -->
+    <form class="container mt-4">
+      <div class="mb-3">
+        <label for="license" class="form-label">License:</label>
+        <input type="file" id="license" (change)="handleFileInput($event, 'license')" class="form-control" />
+        <div *ngIf="selectedFiles['license']">
+          {{ handleFileSizeConverter(selectedFiles['license'].size) }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="reviews" class="form-label">Reviews:</label>
+        <input type="file" id="reviews" (change)="handleFileInput($event, 'reviews')" class="form-control" />
+        <div *ngIf="selectedFiles['reviews']">
+          {{ handleFileSizeConverter(selectedFiles['reviews'].size) }}
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <button type="button" (click)="changeForm()" class="btn btn-secondary">Back</button>
+        <button type="button" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

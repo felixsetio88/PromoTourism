@@ -1,0 +1,33 @@
+<!-- to make the card in the middle -->
+<div class="card card-body mx-auto" style="width: 400px;">
+    <!-- to show the product that the user going to review-->
+    <h2>Product Review</h2>
+    <p>Product Name: {{ productTitle }}</p>
+    <p>Product Description: {{ productDescription }}</p>
+
+    <!-- a button that user can press if they think the product is good or bad-->
+    <p></p>
+    <p>Please select one, if you are satisfied click on good, if you are not satisfied click on bad.</p>
+    <div class="card">
+        
+        <div class="mb-3">
+            <label for="goodReview">Good:</label>
+            <input type="radio" id="goodReview" name="review" [(ngModel)]="review" value="good" [disabled]="isReviewed">
+        </div>
+        <div class="mb-3">
+            <label for="badReview">Bad:</label>
+            <input type="radio" id="badReview" name="review" [(ngModel)]="review" value="bad" [disabled]="isReviewed">
+        </div>
+    </div>
+    <p></p>
+    <p>Your Comment</p>
+    <!-- to let the user input their feedback about the product -->
+    <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Describe if you have any problem" [(ngModel)]="comment" >
+      
+    </div>
+    <!-- a button that user click to submit the review-->
+    <button type="button" class="btn btn-primary" (click)="submitReview()" [disabled]="isReviewed">Submit Review</button>
+  </div>
+
+ 

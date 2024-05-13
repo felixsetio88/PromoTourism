@@ -1,0 +1,29 @@
+<!-- to give some space-->
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+<p>review</p>
+<!-- Check if the user is logged in -->
+<div *ngIf="isLoggedIn; else loginMessage">
+  <div class="row" *ngFor="let review of reviews">
+    <div class="col-md-3" >
+      <!-- to adjust the color, if the review is good then it will be green-->
+      <!-- if the review is bad, then it will be red-->
+      <div class="card mb-3" [ngClass]="{ 'good-review': review.review === 'good', 'bad-review': review.review === 'bad' }">
+        <!-- to display the information -->
+        <h2>Review</h2>
+        <p>Order ID: {{ review.orderId }}</p>
+        <p>Product Name: {{ review.productTitle }}</p>
+        <p>Product Description: {{ review.productDescription }}</p>
+        <p>-------------------------------------------</p>
+        <p>Review: {{ review.review }}</p>
+        <p>Review Description: {{review.comment}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Login message if not logged in -->
+<ng-template #loginMessage>
+  <p>You must login first to see the reviews.</p>
+</ng-template>

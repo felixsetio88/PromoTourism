@@ -1,0 +1,58 @@
+<!-- addproduct.component.html -->
+<div class="card mx-auto">
+<div class="container">
+  <h2>Add Product</h2>
+
+  <!-- Product Form -->
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" id="price" formControlName="price" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" formControlName="quantity" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="category">Category (Tour, Lodging, Food, Rental, Packages,):</label>
+      <input type="text" id="category" formControlName="category" class="form-control" />
+    </div>
+
+    <!-- File Input for Cover Image -->
+    <div class="form-group">
+      <label for="coverImage">Cover Image:</label>
+      <input type="file" id="coverImage" (change)="onCoverChange($event)" class="form-control" />
+      <div *ngFor="let preview of coverPreviews">
+        <img [src]="preview.url" [alt]="preview.fileName" class="preview-image" />
+      </div>
+    </div>
+
+    <!-- File Input for Product Images -->
+    <div class="form-group">
+      <label for="productImages">Product Images:</label>
+      <input type="file" id="file-upload" (change)="onFileChange($event)" multiple class="form-control" />
+      <div *ngFor="let preview of imagePreviews">
+        <img [src]="preview.url" [alt]="preview.fileName" class="preview-image" />
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <!-- Clear Button -->
+  <button type="button" (click)="resetImagePreviews()" class="btn btn-secondary">Clear Images</button>
+</div>
+</div>

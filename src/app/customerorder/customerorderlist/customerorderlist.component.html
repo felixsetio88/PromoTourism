@@ -1,0 +1,44 @@
+
+<!-- Ministry Office Account Management Card -->
+<div class="card mx-auto" style="width: 80%;">
+  <!-- Breadcrumb Section -->
+  <div class="card-header bg-gradient-to-tr from-blue-500 via-blue-700 to-blue-800 rounded-t-3xl">
+    <h1 class="text-2xl font-medium text-black">Customer Order</h1>
+  </div>
+  
+
+<!-- if the status is logged in, then it will show these table, which shows the merchants information -->
+<div class="table-responsive">
+  <table class="table" *ngFor="let order of orders">
+    <thead>
+      <tr>
+        <!-- To show the information of the merchant -->
+        <th scope="col">Invoice</th>
+        <th scope="col">Date</th>
+        <th scope="col">Product ID</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Status</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{ order.invoiceNumber }}</th>
+        <td> {{ order.createdAt }} </td>
+        <td>  {{ order.productId }}</td>
+        <td>{{ order.paypalInfo.purchase_units[0].items[0].quantity }}</td>
+        <!-- A button to aprove and reject, approve button -->
+        <!-- can only be pressed once -->
+        <!-- if the user reject, then the information will be deleted -->
+        <td>{{ order.status }}</td>
+        <td>{{order.total}}</td>
+          
+      </tr>
+      <p *ngIf="order.createdAt == null"></p>
+      <ng-template #noData>
+        <p>Looks like nothing to me...</p>
+      </ng-template>
+    </tbody>
+  </table>
+
+

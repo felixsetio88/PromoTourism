@@ -1,0 +1,30 @@
+<!-- to give some space -->
+<p>&nbsp;</p>
+<!-- a button that the user can press to go back to main menu-->
+<a class="btn btn-primary" routerLink="/">Go Back</a>
+<!-- to give some space -->
+<p>&nbsp;</p>
+  <div class="row">
+    <div class="col-md-4"  *ngFor="let receipt of receipts">
+      <!-- to display all of the receipt information -->
+        <div  class="card mb-3">
+
+            <h2>Receipt</h2>
+
+            <p>Order ID: {{ receipt.orderId }}</p>
+            <p>Date: {{ receipt.date }}</p>
+            <p>--------------------------------------------------------</p>
+            <p>Product Name: {{ receipt.productTitle }}</p>
+            <p>Product Description: {{ receipt.productDescription }}</p>
+            <p>Additional Request: {{ receipt.request }}</p>
+            <p>--------------------------------------------------------</p>
+            <p>Total Price: ${{ receipt.totalPrice }}</p>
+            <!-- a button that the user can press if they wish to review the product -->
+            <button type="button" class="btn btn-primary" (click)="navigateToReview(receipt.orderId, receipt.productTitle, receipt.productDescription)">Review Product</button>
+        </div>
+    </div>
+  </div>
+  <div class="card card-body mx-auto" style="width: 400px;">
+    <!-- a button that the user can press if they want the receipt to be downloaded-->
+    <button type="button" class="btn btn-primary" (click)="downloadAsTxt()">Download All Receipt</button>
+  </div>

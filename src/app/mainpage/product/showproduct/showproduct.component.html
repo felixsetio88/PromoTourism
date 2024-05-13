@@ -1,0 +1,94 @@
+
+<div class="card mx-auto">
+  <div class="card-body d-flex flex-column align-items-center"> <!-- card-body and utility classes -->
+    <div class="col-md-6 mb-3"> <!-- mb-3 to create some margin-bottom -->
+      <label for="exampleFormControlInput1" class="form-label">Search</label>
+      <input class="form-control me-2" type="search" id="exampleFormControlInput1" placeholder="Type the product that you want to search here..." [(ngModel)]="searchTerm"
+      (input)="onSearch()"
+      [ngModelOptions]="{ standalone: true }">
+    </div>
+  </div>
+
+
+  <div class="row">
+    <!-- Sort Dropdown (col-md-6) -->
+    <div class="col-md-6 d-flex justify-content-end">
+      <div class="relative">
+        <div>
+          <i class="uil uil-sort text-gray-500"></i>
+        </div>
+        <select
+          id="sort"
+          name="sort"
+          [(ngModel)]="selectedSortOption"
+          [ngModelOptions]="{ standalone: true }"
+          (change)="sortProducts()">
+          <option value="default" class="hidden">Sort by</option>
+          <option value="default">Default</option>
+          <option value="price-asc">Price: Lowest</option>
+          <option value="price-desc">Price: Highest</option>
+          <option value="name-asc">Name: A-Z</option>
+          <option value="name-desc">Name: Z-A</option>
+        </select>
+      </div>
+    </div>
+  
+    <!-- Filter Dropdown (col-md-6) -->
+    <div class="col-md-4 d-flex justify-content-start">
+      <div class="relative">
+        <div>
+          <!--  -->
+          <i></i>
+        </div>
+        <select
+          id="filter"
+          name="filter"
+          [(ngModel)]="selectedFilterOption"
+          [ngModelOptions]="{ standalone: true }"
+          (change)="filterProducts()">
+          <option value="default" class="hidden">Filter by</option>
+          <option value="all">All</option>
+          <option value="lodging">Lodging</option>
+          <option value="tour">Tour</option>
+          <option value="food">Food</option>
+          <option value="rental">Rental</option>
+          <option value="packages">Packages</option>
+          <option value="shopping">Shopping</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+
+  <p>&nbsp;</p>
+  <div class="row">
+    
+    <div class = "col-md-3" *ngFor="let product of filteredProducts; let i = index" >
+      <div class="card mb-3">
+      <img [src]="readCoverImageURL(product.coverImagePath)" alt="{{ product.name }}" style="max-width: 250px; max-height: 400px;" class="card-img-top mx-auto d-block"/>
+      <div class = "card-body">
+      <h3>{{ product.name }}</h3>
+      <p>Price: ${{ product.price }}</p>
+      <p>Quantity: {{ product.quantity }}</p>
+      <p>Description: {{ product.description }}</p>
+      <!-- Include a check for 'category' property before using it -->
+      <p *ngIf="product.category">Category: {{ product.category }}</p>
+      <a class="btn btn-primary" (click)="redirect(product._id)">Buy</a>
+    </div>
+    </div>
+  </div>
+  </div>
+  <!-- When there is no product fount there will be an image and text 
+  that tell the user that there is no product found -->
+  <div class="card mx-auto">
+    <div *ngIf="filteredProducts.length === 0" class="flex flex-col items-center justify-center mt-10 h-fit py-24">
+      <img src="../../../../assets/problem.png" alt="" class="w-60 h-60" />
+      <p>&nbsp;</p>
+      <p>Looks like nothing to me...</p>
+      <p>Try to search with other filters or keywords</p>
+    </div>
+  </div>
+
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+</div>

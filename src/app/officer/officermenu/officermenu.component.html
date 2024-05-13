@@ -1,0 +1,33 @@
+<div class="relative w-full h-full mb-10">
+    <div
+      class="w-full bg-gradient-to-tr h-72 from-blue-500 via-blue-700 to-blue-800 rounded-b-3xl relative shadow-xl"
+    >
+      <div class="px-10 py-5">
+        <h1 class="text-2xl font-medium text-white">Dashboard</h1>
+        <!-- breadcrumb: start -->
+
+      </div>
+      <div class="flex items-center p-10" id="welcomeText">
+        <div>
+          <h1 class="font-semibold text-2xl md:text-3xl w-full text-white">
+            Welcome ! <span>{{ name }}</span>
+          </h1>
+         
+        </div>
+      </div>
+      <!-- make the summary of product, order, rating, and transaction overlap content above -->
+      <div class="hidden lg:block">
+        <div
+          class="absolute left-0 right-0 grid grid-cols-3 gap-4 px-10 z-10">
+
+          <ul class="list-group">
+            <li class="list-group-item active" aria-current="true">An active item</li>
+            <li class="list-group-item">User count {{user}}</li>
+            <li class="list-group-item">Merchant count {{merchant}}</li>
+            <li class="list-group-item">Product registered {{ product }}</li>
+          </ul>
+          <p class="text-white">Navigate to: </p>
+          <a class="btn btn-primary" href="/officer/manage">Manage</a>
+          <a class="btn btn-primary" href="/officer/analytic">Analytic</a>
+            </div>
+          

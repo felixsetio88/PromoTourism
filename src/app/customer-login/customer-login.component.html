@@ -1,0 +1,26 @@
+<div class="card my-3">
+    <div class="card-header">
+      Masuk
+    </div>
+    <div class="card-body">
+      <div>
+        <div class="mb-3">
+            <input 
+              type="text" 
+              class="form-control" 
+              id="text-username" 
+              placeholder="Username" [(ngModel)]="email">
+          </div>
+        <div class="mb-3">
+            <input 
+              type="password" 
+              class="form-control" 
+              id="text-password" 
+              placeholder="Sandi" [(ngModel)]="password">
+        </div>
+        <div class="d-grid">
+            <button type="button" class="btn btn-primary" (click)="masuk()">Masuk</button>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+
+  <!-- Ministry Office Account Management Card -->
+<div class="card mx-auto" style="width: 80%;">
+  <!-- Breadcrumb Section -->
+  <div class="card-header bg-gradient-to-tr from-blue-500 via-blue-700 to-blue-800 rounded-t-3xl">
+    <h1 class="text-2xl font-medium text-black">Merchant Order List</h1>
+  </div>
+  
+
+<!-- if the status is logged in, then it will show these table, which shows the merchants information -->
+<div class="table-responsive">
+  <!-- To show who's logged in -->
+  <h2>Showing all orders</h2>
+  <table class="table" *ngFor="let order of orders">
+    <thead>
+      <tr>
+        <!-- To show the information of the merchant -->
+        <th scope="col">ID</th>
+        <th scope="col">Order</th>
+        <th scope="col">Date</th>
+        <th scope="col">Buyer</th>
+        <th scope="col">Order Item</th>
+        <th scope="col">Total</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">{{ order?._id }}</th>
+        <td> {{ order?.invoiceNumber }} </td>
+        <td>  {{ order?.createdAt }} </td>
+        <td>{{ order?.userData?.name }}</td>
+        <!-- A button to aprove and reject, approve button -->
+        <!-- can only be pressed once -->
+        <!-- if the user reject, then the information will be deleted -->
+        <td>
+          
+          <span class="border px-4 py-2">{{
+            order?.productData?.name
+          }}</span>
+          <span class="border px-4 py-2">{{
+            order?.productData?.category
+          }}</span>
+          <span *ngIf="merchant.accountStatus == 'rejected'" class="status-badge rejected">Rejected</span></td>
+
+        <td>
+          <span class="font-bold text-gray-700">{{
+            order?.total 
+          }}</span
+          ><br /><span class="text-sm font-normal text-gray-700"
+            >{{ order?.productData?.price  }} x
+            {{
+              order?.paypalInfo?.purchase_units[0]?.items[0]
+                ?.quantity
+            }}
+          </span>
+        </td>
+        <td class="border px-4 py-2">{{ order?.status }}</td>
+      </tr>
+      <p *ngIf="order.productData?.name == null"></p>
+      <ng-template #noData>
+        <p>Looks like nothing to me...</p>
+      </ng-template>
+    </tbody>
+  </table>
+

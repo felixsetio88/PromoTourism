@@ -1,0 +1,28 @@
+<!-- to make the layout in the middle-->
+<div class="card card-body mx-auto" style="width: 400px;">
+    <!-- to print all of the purchase information-->
+    <h2>Receipt Confirmation</h2>
+    
+    <p>Order ID: {{ orderId }}</p>
+    <p>Date: {{ date }}</p>
+    <p>--------------------------------------------------------</p>
+    <p>Product Name: {{ productTitle }}</p>
+    <p>Product Description: {{ productDescription }}</p>
+    <p>Additional Request: {{ request }}</p>
+    <p>--------------------------------------------------------</p>
+    <p>Total Price: ${{ totalPrice }}</p>
+</div>
+<p></p>
+<!-- to download the receipt as txt-->
+<div class="card card-body mx-auto" style="width: 400px;">
+    <button type="button" class="btn btn-primary" (click)="downloadAsTxt()">Download Receipt</button>
+</div>
+<!-- a button to confirm the purchase -->
+<div class="card card-body mx-auto" style="width: 400px;">
+    <button routerLink="/receiptlist" type="button" class="btn btn-primary" (click)="Submit()">Submit Order</button>
+</div>
+
+
+
+
+

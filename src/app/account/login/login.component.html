@@ -1,0 +1,87 @@
+<!-- login.component.html -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <h2 class="mb-4">User Registration</h2>
+          
+          <!-- Form -->
+          <form [formGroup]="userDataForm" (ngSubmit)="onSubmit()">
+            <!-- User Email -->
+            <div class="mb-3">
+              <label for="userEmail" class="form-label">Email address</label>
+              <input type="email" id="userEmail" class="form-control" formControlName="userEmail">
+              <div *ngIf="userDataForm.get('userEmail')?.hasError('required') && submittedClicked"
+                class="text-danger">Email is required</div>
+              <div *ngIf="userDataForm.get('userEmail')?.hasError('email') && submittedClicked"
+                class="text-danger">Invalid email format</div>
+              <div *ngIf="userDataForm.get('userEmail')?.hasError('emailTaken') && submittedClicked"
+                class="text-danger">Email is already taken</div>
+            </div>
+  
+            <!-- User Phone -->
+            <div class="mb-3">
+              <label for="userPhone" class="form-label">Phone number</label>
+              <input type="text" id="userPhone" class="form-control" formControlName="userPhone">
+              <div *ngIf="userDataForm.get('userPhone')?.hasError('required') && submittedClicked"
+                class="text-danger">Phone number is required</div>
+              <div *ngIf="userDataForm.get('userPhone')?.hasError('minlength') && submittedClicked"
+                class="text-danger">Phone number must be at least 8 characters</div>
+            </div>
+  
+            <!-- User Name -->
+            <div class="mb-3">
+              <label for="userName" class="form-label">Full name</label>
+              <input type="text" id="userName" class="form-control" formControlName="userName">
+              <div *ngIf="userDataForm.get('userName')?.hasError('required') && submittedClicked"
+                class="text-danger">Full name is required</div>
+            </div>
+
+            <!-- User Address -->
+            <div class="mb-3">
+              <label for="userAddress" class="form-label">Address</label>
+              <input type="text" id="userAddress" class="form-control" formControlName="userAddress">
+              <div *ngIf="userDataForm.get('userAddress')?.hasError('required') && submittedClicked"
+                class="text-danger">Address is required</div>
+            </div>
+  
+            <!-- User Password -->
+            <div class="mb-3">
+              <label for="userPass" class="form-label">Password</label>
+              <input type="password" id="userPass" class="form-control" formControlName="userPass">
+              <div *ngIf="userDataForm.get('userPass')?.hasError('required') && submittedClicked"
+                class="text-danger">Password is required</div>
+              <div *ngIf="userDataForm.get('userPass')?.hasError('minlength') && submittedClicked"
+                class="text-danger">Password must be at least 8 characters</div>
+            </div>
+  
+            <!-- Confirm Password -->
+            <div class="mb-3">
+              <label for="userPassConfirm" class="form-label">Confirm Password</label>
+              <input type="password" id="userPassConfirm" class="form-control" formControlName="userPassConfirm">
+              <div *ngIf="userDataForm.get('userPassConfirm')?.hasError('required') && submittedClicked"
+                class="text-danger">Please confirm your password</div>
+              <div *ngIf="userDataForm.hasError('passwordMismatch') && submittedClicked"
+                class="text-danger">Passwords do not match</div>
+            </div>
+  
+            <!-- Agree to Terms of Service -->
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="agreeTOS" formControlName="agreeTOS">
+              <label class="form-check-label" for="agreeTOS">I agree to the Terms of Service</label>
+              <div *ngIf="userDataForm.get('agreeTOS')?.hasError('requiredTrue') && submittedClicked"
+                class="text-danger">Please agree to the Terms of Service</div>
+            </div>
+  
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

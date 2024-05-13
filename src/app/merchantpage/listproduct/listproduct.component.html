@@ -1,0 +1,32 @@
+<div class="card mx-auto">
+  <p>&nbsp;</p>
+  <h3>All Products</h3>
+  <p>&nbsp;</p>
+  <!-- Product List -->
+  <div class="row">
+    <div class="col-md-3" *ngFor="let product of products; let i = index">
+      <div class="card mb-3">
+      <img [src]="readCoverImageURL(product.coverImagePath)" alt="{{ product.name }}" />
+      <div class="card-body">
+      <h3>{{ product.name }}</h3>
+      <p>Price: ${{ product.price }}</p>
+      <p>Quantity: {{ product.quantity }}</p>
+      <p>Description: {{ product.description }}</p>
+      <!-- Include a check for 'category' property before using it -->
+      <p *ngIf="product.category">Category: {{ product.category }}</p>
+      <button class="btn btn-danger" (click)="deleteProduct(product, i)">Delete</button>
+    </div>
+  </div>
+  </div>
+</div>
+
+  <div *ngIf="products.length === 0">
+    <div>
+      <h1>No Product Found</h1>
+      <p>Please try another keyword</p>
+    </div>
+  </div>
+  <p>&nbsp;</p>
+
+
+</div>

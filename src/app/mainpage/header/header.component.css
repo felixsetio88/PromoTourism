@@ -1,0 +1,31 @@
+/* your-component.component.css */
+.transparent-header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Adjust the blur radius as needed */
+    transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .transparent-header.scrolled {
+    backdrop-filter: blur(10px); /* Make sure to include the blur property here */
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and transparency as needed */
+  }
+  
+  /* Add these styles to set a consistent size for the header */
+  .transparent-header nav,
+  .transparent-header header {
+    height: 70px; /* Adjust the height as needed */
+  }
+  
+  /* Adjust the margin-top for your content to make space for the fixed header */
+  .transparent-header + main {
+    margin-top: 70px; /* Adjust the margin-top based on the header height */
+  }
+  
+  h1 {
+    font-family: 'Your Font', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }

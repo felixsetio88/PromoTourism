@@ -1,0 +1,35 @@
+    <!-- To make the card position in the middle -->
+    <div class="card card-body mx-auto" style="width: 400px;">
+        <div class="list-group">
+            <!-- To make the color blue and make it more appealing -->
+            <a  class="list-group-item list-group-item-action active" aria-current="true">
+              <p>Your order information: </p>
+              <p>Title : {{product.title}}</p>
+              <p>Description: {{product.description}}</p>
+              <p>Price : {{product.price}} </p>
+            </a>
+            <!-- To enter today's date -->
+            <a class="list-group-item list-group-item-action">
+                <label for="exampleFormControlInput1" class="form-label">Date</label>
+                <input type="date" class="form-control"  placeholder="DD/MM/YYYY" [(ngModel)]="user.date">
+            </a>
+            <!-- To let the user to enter their request (if any) -->
+            <a class="list-group-item list-group-item-action">
+                <label for="exampleFormControlInput1" class="form-label">Additional Request (if there is any)</label>
+                <input type="text" class="form-control"  placeholder="Your request here" [(ngModel)]="user.request">
+            </a>
+            <!-- To let the user to enter their address -->
+            <a class="list-group-item list-group-item-action">
+                <label for="exampleFormControlInput1" class="form-label">Address</label>
+                <input type="text" class="form-control"  placeholder="Your address here" [(ngModel)]="user.address">
+            </a>
+          </div>
+          <p></p>
+          <!-- If the user already enter all of the required information -->
+          <!-- They can proceed to the next page by clicking the "confirm" button -->
+        <button class="btn btn-primary" type="submit"(click)="buyProduct()">Confirm</button>
+      </div>
+    <div *ngIf="generatedOrderId && totalPayment">
+      <p>Order ID: {{ generatedOrderId }}</p>
+      <p>Total Price: ${{ totalPayment }}</p>
+    </div>
